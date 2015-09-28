@@ -50,6 +50,7 @@ public class IntroductionBuilder {
     private ArrayList<Slide> slides;
     private Integer style;
     private Boolean showPreviousButton;
+    private Boolean showPreviousNextButton;
     private Boolean showIndicator;
     private Integer orientation;
 
@@ -122,6 +123,12 @@ public class IntroductionBuilder {
      */
     public IntroductionBuilder withPreviousButtonEnabled(boolean enabled) {
         this.showPreviousButton = enabled;
+
+        return this;
+    }
+
+    public IntroductionBuilder withPreviousAndNextButtonEnabled(boolean enabled) {
+        this.showPreviousNextButton = enabled;
 
         return this;
     }
@@ -217,6 +224,7 @@ public class IntroductionBuilder {
         bundle.putInt("introduction_style", style);
         bundle.putInt("introduction_orientation", orientation);
         bundle.putBoolean("introduction_show_previous_button", showPreviousButton);
+        bundle.putBoolean("introduction_show_previous_and_next_button", showPreviousNextButton);
         bundle.putBoolean("introduction_show_indicator", showIndicator);
 
         intent.putExtras(bundle);

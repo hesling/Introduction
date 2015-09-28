@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -31,9 +30,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.rubengees.introduction.adapter.PagerAdapter;
@@ -71,6 +68,7 @@ public class IntroductionActivity extends AppCompatActivity {
     private IndicatorManager indicatorManager;
 
     private boolean showPreviousButton;
+    private boolean showPreviousNextButton;
     private boolean showIndicator;
     private int orientation;
     private SystemBarTintManager.SystemBarConfig config;
@@ -124,6 +122,7 @@ public class IntroductionActivity extends AppCompatActivity {
         orientation = bundle.getInt("introduction_orientation",
                 IntroductionBuilder.ORIENTATION_BOTH);
         showPreviousButton = bundle.getBoolean("introduction_show_previous_button", true);
+        showPreviousNextButton = bundle.getBoolean("introduction_show_previous_and_next_button", true);
         showIndicator = bundle.getBoolean("introduction_show_indicator", true);
 
         if (slides == null) {
@@ -187,7 +186,10 @@ public class IntroductionActivity extends AppCompatActivity {
     }
 
     private void initManagers() {
-        buttonManager = new ButtonManager(previous, next, showPreviousButton, slides.size());
+        if (showPreviousNextButton) {
+            buttonManager = new ButtonManager(previous, next, showPreviousButton, slides.size());
+        }
+
         indicatorManager = configuration.getIndicatorManager();
 
         if (indicatorManager == null) {

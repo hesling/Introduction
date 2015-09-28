@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onDefaultClick(View view) {
         new IntroductionBuilder(this).withSlides(generateSlides())
+                .withPreviousAndNextButtonEnabled(false)
                 .withOnSlideListener(defaultOnSlideListener).introduceMyself();
     }
 
