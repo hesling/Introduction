@@ -206,6 +206,10 @@ public class IntroductionBuilder {
             showPreviousButton = true;
         }
 
+        if (showPreviousNextButton == null) {
+            showPreviousNextButton = true;
+        }
+
         if (showIndicator == null) {
             showIndicator = true;
         }
